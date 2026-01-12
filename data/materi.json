@@ -1,0 +1,29 @@
+{
+  "mudah": {
+    "judul": "Persamaan Linear Satu Variabel (Mudah)",
+    "deskripsi": "Materi ini membahas konsep dasar persamaan linear satu variabel.",
+    "materi": [
+      "Persamaan linear memiliki satu variabel dengan pangkat tertinggi satu.",
+      "Tujuan utama adalah mencari nilai variabel yang memenuhi persamaan."
+    ],
+    "contoh": "x + 2 = 5, maka x = 3"
+  },
+  "normal": {
+    "judul": "Persamaan Linear Satu Variabel (Normal)",
+    "deskripsi": "Materi ini melibatkan manipulasi aljabar sederhana.",
+    "materi": [
+      "Bilangan dapat dipindahkan ruas dengan operasi kebalikan.",
+      "Koefisien variabel harus disederhanakan."
+    ],
+    "contoh": "2x + 4 = 10, maka x = 3"
+  },
+  "sulit": {
+    "judul": "Persamaan Linear Satu Variabel (Sulit)",
+    "deskripsi": "Materi ini melibatkan pecahan dan operasi kompleks.",
+    "materi": [
+      "Persamaan dapat mengandung pecahan atau bentuk rasional.",
+      "Ketelitian sangat diperlukan dalam menyelesaikannya."
+    ],
+    "contoh": "(x / 2) + 3 = 7, maka x = 8"
+  }
+}

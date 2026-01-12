@@ -1,0 +1,28 @@
+{
+  "mudah": [
+    {
+      "pertanyaan": "2 + 3 = ?",
+      "opsi": ["4", "5", "6"],
+      "jawaban": "5"
+    },
+    {
+      "pertanyaan": "5 × 2 = ?",
+      "opsi": ["7", "10", "12"],
+      "jawaban": "10"
+    }
+  ],
+  "normal": [
+    {
+      "pertanyaan": "12 ÷ 3 = ?",
+      "opsi": ["3", "4", "5"],
+      "jawaban": "4"
+    }
+  ],
+  "sulit": [
+    {
+      "pertanyaan": "Jika x + 3 = 7, maka x = ?",
+      "opsi": ["2", "3", "4"],
+      "jawaban": "4"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Materi Pembelajaran</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="level-page">
+
+<div class="container">
+
+    <h2>{{ materi.judul }}</h2>
+
+    <p class="note">
+    Tingkat kesulitan:
+    <strong>{{ tingkat|capitalize }}</strong>
+    </p>
+
+
+    <p>
+        {{ materi.deskripsi }}
+    </p>
+
+    <hr>
+
+    <h3>📘 Penjelasan Materi</h3>
+    <ul>
+        {% for poin in materi.materi %}
+            <li style="margin-bottom: 10px;">{{ poin }}</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <h3>✏️ Contoh Soal</h3>
+    <div class="materi-box">
+        <p><strong>{{ materi.contoh }}</strong></p>
+    </div>
+
+    <form action="/soal/{{ tingkat }}" method="get">
+        <button>
+            Lanjut ke Soal
+        </button>
+    </form>
+
+    <p class="note" style="margin-top: 20px;">
+        Sistem akan menyesuaikan soal berdasarkan
+        hasil belajar dan persepsi pemahaman Anda.
+    </p>
+
+</div>
+
+</body>
+</html>

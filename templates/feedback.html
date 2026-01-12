@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Pembelajaran</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="feedback-page">
+
+    <h1>Hasil Evaluasi Pembelajaran</h1>
+
+    <div class="feedback-box">
+        <p><strong>Jumlah Benar:</strong> {{ benar }} dari {{ total }}</p>
+        <p><strong>Waktu Pengerjaan:</strong> {{ waktu }} detik</p>
+
+        <hr>
+
+        <p class="feedback-message">{{ pesan }}</p>
+
+        <p class="feedback-recommendation">
+            {{ rekomendasi }}
+        </p>
+
+        <a href="{{ next_url }}" class="feedback-btn">
+            Lanjutkan Pembelajaran
+        </a>
+    </div>
+
+</body>
+</html>

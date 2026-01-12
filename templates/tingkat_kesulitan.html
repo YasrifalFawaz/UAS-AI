@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pilih Tingkat Kesulitan</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="level-page">
+
+<div class="container">
+
+    <h2>Pilih Tingkat Kesulitan</h2>
+
+    <p>
+        Setiap orang memiliki tingkat kesiapan belajar yang berbeda.
+        Silakan pilih tingkat kesulitan yang menurut Anda paling sesuai
+        dengan pemahaman saat ini.
+    </p>
+
+    <p class="note">
+        Pilihan ini bukan penilaian kemampuan, melainkan titik awal
+        pembelajaran yang dapat berubah secara adaptif.
+    </p>
+
+    <hr>
+
+    <div class="level-container">
+
+        <!-- MUDAH -->
+        <a href="/materi/mudah" class="level-link">
+            <div class="level-card mudah">
+                <h3>🟢 Mudah</h3>
+                <p>
+                    Cocok jika Anda baru mempelajari materi atau
+                    ingin memahami konsep dasar secara perlahan.
+                </p>
+            </div>
+        </a>
+
+        <!-- NORMAL -->
+        <a href="/materi/normal" class="level-link">
+            <div class="level-card normal">
+                <h3>🟡 Normal</h3>
+                <p>
+                    Cocok jika Anda sudah memahami konsep dasar
+                    dan siap mengerjakan soal dengan tingkat menengah.
+                </p>
+            </div>
+        </a>
+
+
+        <!-- SULIT -->
+        <a href="/materi/sulit" class="level-link">
+            <div class="level-card sulit">
+                <h3>🔴 Sulit</h3>
+                <p>
+                    Cocok jika Anda merasa percaya diri dan siap
+                    menghadapi tantangan yang lebih kompleks.
+                </p>
+            </div>
+        </a>
+
+    </div>
+
+    <p class="note" style="margin-top: 30px;">
+        Sistem akan menyesuaikan materi dan soal berdasarkan pilihan awal
+        serta hasil evaluasi pembelajaran Anda.
+    </p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Soal - {{ tingkat|capitalize }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="soal-page">
+
+    <h1>Latihan Soal Tingkat {{ tingkat|capitalize }}</h1>
+
+    <p class="timer">
+        ⏱ Waktu pengerjaan: <span id="time">0</span> detik
+    </p>
+
+    <p>
+        Jawablah pertanyaan berikut dengan cermat.  
+        Waktu pengerjaan akan digunakan untuk memberikan umpan balik pembelajaran.
+    </p>
+
+    <form method="post">
+        <!-- waktu pengerjaan -->
+        <input type="hidden" name="waktu" id="waktu">
+
+        {% for s in soal %}
+        {% set soal_index = loop.index0 %}
+
+        <div class="soal-box">
+            <p><strong>{{ loop.index }}. {{ s.pertanyaan }}</strong></p>
+
+            {% for opsi in s.opsi %}
+            <label>
+                <input type="radio"
+                       name="q{{ soal_index }}"
+                       value="{{ opsi }}"
+                       required>
+                {{ opsi }}
+            </label>
+            {% endfor %}
+        </div>
+
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">
+            Kirim Jawaban
+        </button>
+    </form>
+
+    <script>
+        let waktu = 0;
+        setInterval(() => {
+            waktu++;
+            document.getElementById("time").innerText = waktu;
+            document.getElementById("waktu").value = waktu;
+        }, 1000);
+    </script>
+
+</body>
+</html>

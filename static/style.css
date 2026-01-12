@@ -1,0 +1,430 @@
+/* ===============================
+   RESET & GLOBAL
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===============================
+   INDEX PAGE (WELCOME)
+================================ */
+body.index-page {
+    height: 100vh;
+    background: linear-gradient(135deg, #2563eb, #60a5fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero {
+    text-align: center;
+    max-width: 900px;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: 3.8rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #e0f2fe;
+}
+
+.hero button {
+    padding: 16px 40px;
+    font-size: 1.15rem;
+    background: white;
+    color: #2563eb;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero button:hover {
+    background: #dbeafe;
+    transform: scale(1.05);
+}
+
+/* ===============================
+   TINGKAT KESULITAN PAGE
+================================ */
+body.level-page {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #e0f2fe, #f8fafc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0f172a;
+}
+
+.container {
+    max-width: 1000px;
+    width: 90%;
+    background: white;
+    padding: 50px;
+    border-radius: 22px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    font-size: 2.2rem;
+    color: #1d4ed8;
+    margin-bottom: 15px;
+}
+
+.container p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 12px;
+    color: #334155;
+}
+
+.note {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+/* ===============================
+   LEVEL CARDS
+================================ */
+.level-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    margin-top: 35px;
+}
+
+.level-card {
+    border: none;
+    padding: 35px;
+    border-radius: 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.level-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.level-card p {
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+/* WARNA LEVEL */
+.level-card.mudah {
+    background: #dcfce7;
+}
+
+.level-card.normal {
+    background: #fef3c7;
+}
+
+.level-card.sulit {
+    background: #fee2e2;
+}
+
+.level-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.6rem;
+    }
+
+    .container {
+        padding: 35px;
+    }
+
+    .container h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ===============================
+   MATERI PAGE (PER LEVEL)
+   Safe to append
+================================ */
+
+/* List materi */
+.container ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.container ul li {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #334155;
+}
+
+/* Materi box (contoh soal) */
+.materi-box {
+    background: #f1f5f9;
+    padding: 22px;
+    border-radius: 14px;
+    margin-top: 12px;
+    border-left: 6px solid #2563eb;
+}
+
+/* Heading khusus materi */
+.container h3 {
+    margin-top: 30px;
+    color: #0f172a;
+}
+
+/* Level indicator color */
+body.level-page .note strong {
+    color: #1d4ed8;
+}
+
+/* Button lanjut soal */
+body.level-page button {
+    margin-top: 30px;
+    padding: 14px 36px;
+    font-size: 1.05rem;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.level-page button:hover {
+    background: #1e40af;
+    transform: scale(1.03);
+}
+
+/* Animasi halus saat load */
+body.level-page .container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+    .materi-box {
+        padding: 18px;
+    }
+}
+
+.level-link,
+.level-link h3,
+.level-link p,
+.level-link span,
+.level-link div {
+    text-decoration: none !important;
+}
+
+/* ============================= */
+/* HALAMAN SOAL */
+/* ============================= */
+
+body.soal-page {
+    margin: 0;
+    padding: 40px 80px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #f0f4ff, #fdfefe);
+    color: #1f2937;
+}
+
+/* Judul */
+.soal-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Timer */
+.timer {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+/* Box soal */
+.soal-box {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+.soal-box:hover {
+    transform: translateY(-3px);
+}
+
+/* Pertanyaan */
+.soal-box p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* Opsi jawaban */
+.soal-box label {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.soal-box label:hover {
+    background: #eef2ff;
+}
+
+.soal-box input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Tombol kirim */
+.submit-btn {
+    margin-top: 30px;
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body.soal-page {
+        padding: 20px;
+    }
+
+    .soal-page h1 {
+        font-size: 2rem;
+    }
+}
+
+/* ============================= */
+/* HALAMAN FEEDBACK PEMBELAJARAN */
+/* ============================= */
+
+body.feedback-page {
+    margin: 0;
+    padding: 60px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #fdfbfb, #ebedee);
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+/* Judul */
+.feedback-page h1 {
+    font-size: 2.6rem;
+    margin-bottom: 30px;
+    color: #1e3a8a;
+}
+
+/* Box utama */
+.feedback-box {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 20px;
+    max-width: 700px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Info hasil */
+.feedback-box p {
+    font-size: 1.1rem;
+    margin: 12px 0;
+}
+
+/* Garis pemisah */
+.feedback-box hr {
+    margin: 25px 0;
+    border: none;
+    border-top: 2px solid #e5e7eb;
+}
+
+/* Pesan utama (emotion-aware) */
+.feedback-message {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+/* Rekomendasi */
+.feedback-recommendation {
+    font-size: 1.15rem;
+    color: #374151;
+    margin-bottom: 30px;
+}
+
+/* Tombol lanjut */
+.feedback-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 35px rgba(37, 99, 235, 0.55);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body.feedback-page {
+        padding: 30px;
+    }
+
+    .feedback-box {
+        padding: 30px;
+    }
+
+    .feedback-page h1 {
+        font-size: 2.1rem;
+    }
+}
+
