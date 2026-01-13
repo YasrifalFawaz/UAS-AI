@@ -1,28 +1,52 @@
 {
-  "mudah": [
-    {
-      "pertanyaan": "2 + 3 = ?",
-      "opsi": ["4", "5", "6"],
-      "jawaban": "5"
-    },
-    {
-      "pertanyaan": "5 × 2 = ?",
-      "opsi": ["7", "10", "12"],
-      "jawaban": "10"
-    }
-  ],
-  "normal": [
-    {
-      "pertanyaan": "12 ÷ 3 = ?",
-      "opsi": ["3", "4", "5"],
-      "jawaban": "4"
-    }
-  ],
-  "sulit": [
-    {
-      "pertanyaan": "Jika x + 3 = 7, maka x = ?",
-      "opsi": ["2", "3", "4"],
-      "jawaban": "4"
-    }
-  ]
+  "mudah": {
+    "pilihan_ganda": [
+      {"pertanyaan": "2 + 3 = ?", "opsi": [4,5,6,7,8], "jawaban": 5},
+      {"pertanyaan": "5 + 4 = ?", "opsi": [7,8,9,10,11], "jawaban": 9},
+      {"pertanyaan": "10 − 6 = ?", "opsi": [2,3,4,5,6], "jawaban": 4},
+      {"pertanyaan": "3 × 2 = ?", "opsi": [4,5,6,7,8], "jawaban": 6},
+      {"pertanyaan": "8 ÷ 2 = ?", "opsi": [2,3,4,5,6], "jawaban": 4}
+    ],
+    "essay": [
+      {"pertanyaan": "Hitung hasil dari 7 + 8", "jawaban": 15},
+      {"pertanyaan": "Hitung hasil dari 12 − 5", "jawaban": 7},
+      {"pertanyaan": "Hitung hasil dari 4 × 3", "jawaban": 12},
+      {"pertanyaan": "Hitung hasil dari 16 ÷ 4", "jawaban": 4},
+      {"pertanyaan": "Hitung hasil dari 9 + 6", "jawaban": 15}
+    ]
+  },
+
+  "normal": {
+    "pilihan_ganda": [
+      {"pertanyaan": "12 ÷ 3 = ?", "opsi": [2,3,4,5,6], "jawaban": 4},
+      {"pertanyaan": "7 × 6 = ?", "opsi": [36,40,42,44,48], "jawaban": 42},
+      {"pertanyaan": "25 − 9 = ?", "opsi": [14,15,16,17,18], "jawaban": 16},
+      {"pertanyaan": "15 + 18 = ?", "opsi": [30,31,32,33,34], "jawaban": 33},
+      {"pertanyaan": "20 ÷ 5 = ?", "opsi": [2,3,4,5,6], "jawaban": 4}
+    ],
+    "essay": [
+      {"pertanyaan": "Hitung hasil dari 24 ÷ 6", "jawaban": 4},
+      {"pertanyaan": "Hitung hasil dari 9 × 7", "jawaban": 63},
+      {"pertanyaan": "Hitung hasil dari 45 − 19", "jawaban": 26},
+      {"pertanyaan": "Hitung hasil dari 18 + 27", "jawaban": 45},
+      {"pertanyaan": "Hitung hasil dari (8 × 5) − 10", "jawaban": 30}
+    ]
+  },
+
+  "sulit": {
+    "pilihan_ganda": [
+      {"pertanyaan": "(2 × 6) + 8 = ?", "opsi": [18,20,22,24,26], "jawaban": 20},
+      {"pertanyaan": "36 ÷ (3 × 3) = ?", "opsi": [2,3,4,5,6], "jawaban": 4},
+      {"pertanyaan": "5² = ?", "opsi": [10,15,20,25,30], "jawaban": 25},
+      {"pertanyaan": "√49 = ?", "opsi": [5,6,7,8,9], "jawaban": 7},
+      {"pertanyaan": "3³ = ?", "opsi": [9,18,27,36,45], "jawaban": 27}
+    ],
+    "essay": [
+      {"pertanyaan": "Hitung hasil dari (2 × 5) + (12 ÷ 3)", "jawaban": 14},
+      {"pertanyaan": "Jika 2x + 4 = 10, hitung x", "jawaban": 3},
+      {"pertanyaan": "Hitung hasil dari 6² − 20", "jawaban": 16},
+      {"pertanyaan": "Hitung hasil dari (18 ÷ 3) × 4", "jawaban": 24},
+      {"pertanyaan": "Hitung hasil dari 100 ÷ (5 × 4)", "jawaban": 5}
+    ]
+  }
 }

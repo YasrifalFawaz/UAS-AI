@@ -1,5 +1,11 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import json
+import joblib
+import numpy as np
+
+model = joblib.load("model/decision_tree.pkl")
+level_encoder = joblib.load("model/level_encoder.pkl")
+label_encoder = joblib.load("model/label_encoder.pkl")
 
 app = Flask(__name__)
 app.secret_key = "emotion-adaptive-ai"
@@ -49,69 +55,79 @@ def soal(tingkat):
     if tingkat not in data_soal:
         return "Tingkat tidak valid", 404
 
+    soal_level = data_soal[tingkat]
+
     if request.method == "POST":
         jawaban_user = request.form.to_dict()
         waktu = int(jawaban_user.pop("waktu"))
 
-        soal_level = data_soal[tingkat]
         benar = 0
+        total = 0
 
-        for i, soal in enumerate(soal_level):
-            if jawaban_user.get(f"q{i}") == soal["jawaban"]:
+        # ===== PILIHAN GANDA =====
+        for i, soal in enumerate(soal_level["pilihan_ganda"]):
+            total += 1
+            if jawaban_user.get(f"pg{i}") == str(soal["jawaban"]):
                 benar += 1
 
+        # ===== ESSAY =====
+        for i, soal in enumerate(soal_level["essay"]):
+            total += 1
+            if jawaban_user.get(f"essay{i}") == str(soal["jawaban"]):
+                benar += 1
+
+        skor = benar / total
+
         return redirect(
-            f"/feedback?benar={benar}&total={len(soal_level)}&waktu={waktu}&tingkat={tingkat}"
-        )       
+            url_for(
+                "feedback",
+                skor=skor,
+                waktu=waktu,
+                level=tingkat
+            )
+)
 
 
     return render_template(
         "soal.html",
         tingkat=tingkat,
-        soal=data_soal[tingkat]
+        soal=soal_level
     )
+
 
 
 # ================== (3) FEEDBACK + AI ==================
-@app.route("/feedback")
+@app.route("/feedback", methods=["GET"])
 def feedback():
-    benar = int(request.args.get("benar"))
-    total = int(request.args.get("total"))
+    skor = float(request.args.get("skor"))
     waktu = int(request.args.get("waktu"))
-    tingkat = request.args.get("tingkat")
+    level = request.args.get("level")
 
-    skor = benar / total
+    level_encoded = level_encoder.transform([level])[0]
+    X_input = np.array([[skor, waktu, level_encoded]])
 
-    # RULE-BASED AI
-    if skor >= 0.8 and waktu <= 60:
-        status = "sangat_baik"
-        pesan = "Anda menjawab dengan benar dan cepat. Pemahaman Anda sangat baik."
-        rekomendasi = "Lanjut ke tingkat yang lebih sulit."
-        next_url = "/tingkat_kesulitan"
+    pred_encoded = model.predict(X_input)[0]
+    hasil = label_encoder.inverse_transform([pred_encoded])[0]
 
-    elif skor >= 0.8:
-        status = "baik"
-        pesan = "Jawaban Anda benar, namun membutuhkan waktu cukup lama."
-        rekomendasi = "Disarankan mempelajari penguatan materi."
-        next_url = f"/materi/{tingkat}"
-
+    if hasil == "paham":
+        feedback_text = "Anda sudah memahami materi dengan baik."
+        rekomendasi = "Lanjut ke materi berikutnya."
+    elif hasil == "kurang_paham":
+        feedback_text = "Pemahaman cukup, namun perlu penguatan."
+        rekomendasi = "Pelajari ulang materi dengan contoh tambahan."
     else:
-        status = "perlu_ulang"
-        pesan = "Pemahaman Anda belum optimal."
-        rekomendasi = "Silakan mengulang materi dengan penjelasan lebih sederhana."
-        next_url = f"/materi/{tingkat}"
+        feedback_text = "Pemahaman masih kurang."
+        rekomendasi = "Ulangi materi dari dasar."
 
     return render_template(
         "feedback.html",
-        benar=benar,
-        total=total,
+        skor=skor,
         waktu=waktu,
-        pesan=pesan,
-        rekomendasi=rekomendasi,
-        next_url=next_url
+        level=level,
+        hasil=hasil,
+        feedback=feedback_text,
+        rekomendasi=rekomendasi
     )
-
-
 
 # ================== AI SEARCHING ==================
 def ai_search(jumlah_salah):

@@ -2,59 +2,74 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Latihan Soal - {{ tingkat|capitalize }}</title>
+    <title>Soal - {{ tingkat|capitalize }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body class="soal-page">
 
-    <h1>Latihan Soal Tingkat {{ tingkat|capitalize }}</h1>
+<h1>Latihan Soal ({{ tingkat|capitalize }})</h1>
 
-    <p class="timer">
-        ⏱ Waktu pengerjaan: <span id="time">0</span> detik
-    </p>
+<p class="timer">
+    ⏱ Waktu pengerjaan: <span id="time">0</span> detik
+</p>
 
-    <p>
-        Jawablah pertanyaan berikut dengan cermat.  
-        Waktu pengerjaan akan digunakan untuk memberikan umpan balik pembelajaran.
-    </p>
+<p>
+    Jawablah soal berikut dengan teliti.  
+    Sistem akan mengevaluasi jawaban dan waktu pengerjaan Anda.
+</p>
 
-    <form method="post">
-        <!-- waktu pengerjaan -->
-        <input type="hidden" name="waktu" id="waktu">
+<form method="post">
+    <input type="hidden" name="waktu" id="waktu">
 
-        {% for s in soal %}
-        {% set soal_index = loop.index0 %}
+    <!-- PILIHAN GANDA -->
+    <h2>Pilihan Ganda</h2>
 
-        <div class="soal-box">
-            <p><strong>{{ loop.index }}. {{ s.pertanyaan }}</strong></p>
+    {% for s in soal.pilihan_ganda %}
+    {% set idx = loop.index0 %}
+    <div class="soal-box">
+        <p><strong>{{ loop.index }}. {{ s.pertanyaan }}</strong></p>
 
-            {% for opsi in s.opsi %}
-            <label>
-                <input type="radio"
-                       name="q{{ soal_index }}"
-                       value="{{ opsi }}"
-                       required>
-                {{ opsi }}
-            </label>
-            {% endfor %}
-        </div>
-
+        {% for opsi in s.opsi %}
+        <label>
+            <input type="radio"
+                   name="pg{{ idx }}"
+                   value="{{ opsi }}"
+                   required>
+            {{ opsi }}
+        </label>
         {% endfor %}
+    </div>
+    {% endfor %}
 
-        <button type="submit" class="submit-btn">
-            Kirim Jawaban
-        </button>
-    </form>
+    <!-- ESSAY HITUNGAN -->
+    <h2>Soal Hitungan (Essay)</h2>
 
-    <script>
-        let waktu = 0;
-        setInterval(() => {
-            waktu++;
-            document.getElementById("time").innerText = waktu;
-            document.getElementById("waktu").value = waktu;
-        }, 1000);
-    </script>
+    {% for s in soal.essay %}
+    {% set idx = loop.index0 %}
+    <div class="soal-box">
+        <p><strong>{{ loop.index }}. {{ s.pertanyaan }}</strong></p>
+        <input type="number"
+               name="essay{{ idx }}"
+               step="any"
+               required
+               placeholder="Masukkan hasil perhitungan">
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="submit-btn">
+        Kirim Jawaban
+    </button>
+</form>
+
+<script>
+    let waktu = 0;
+    setInterval(() => {
+        waktu++;
+        document.getElementById("time").innerText = waktu;
+        document.getElementById("waktu").value = waktu;
+    }, 1000);
+</script>
 
 </body>
 </html>
