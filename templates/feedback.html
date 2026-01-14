@@ -3,79 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Feedback Pembelajaran</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background: rgba(0,0,0,0.6);
-            padding: 40px;
-            border-radius: 15px;
-            width: 80%;
-            max-width: 700px;
-            text-align: center;
-        }
-
-        h1 { margin-bottom: 10px; }
-
-        .hasil {
-            font-size: 26px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .paham { color: #2ecc71; }
-        .kurang_paham { color: #f1c40f; }
-        .tidak_paham { color: #e74c3c; }
-
-        .btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 25px;
-            background: #00c6ff;
-            color: black;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background: #00a8e8;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
 
-<div class="container">
-    <h1>Feedback Pembelajaran</h1>
+<body class="feedback-page">
 
-    <div class="hasil {{ hasil }}">
-        {{ hasil | replace("_", " ") | upper }}
-    </div>
+<h1>Hasil Evaluasi Pembelajaran</h1>
 
-    <p><strong>Skor:</strong> {{ skor }}</p>
-    <p><strong>Waktu:</strong> {{ waktu }} detik</p>
-    <p><strong>Level:</strong> {{ level }}</p>
-
-    <hr>
-
-    <p>{{ feedback }}</p>
-    <p><strong>Rekomendasi:</strong> {{ rekomendasi }}</p>
-
-    {% if aksi == "lanjut" %}
-        <a href="/tingkat_kesulitan" class="btn">Lanjutkan</a>
-    {% else %}
-        <a href="/materi/{{ level }}" class="btn">Pelajari Ulang</a>
-    {% endif %}
+<div class="feedback-box">
+    <p><strong>Skor Anda:</strong> {{ (skor * 100)|round(0) }}%</p>
+    <p><strong>Waktu Penyelesaian:</strong> {{ waktu }} detik</p>
+    <p><strong>Status Pemahaman:</strong> {{ hasil|replace("_"," ")|capitalize }}</p>
+    <p><strong>Tingkat Saat Ini:</strong> {{ level|capitalize }}</p>
 </div>
+
+<hr>
+
+{% if keputusan == "naik_level" %}
+    <a href="{{ url_for('materi', tingkat=next_level) }}" class="btn">
+        Lanjut ke Level {{ next_level|capitalize }}
+    </a>
+
+{% elif keputusan == "lulus" %}
+    <p>🏆 Selamat! Anda telah menyelesaikan seluruh tingkat pembelajaran.</p>
+
+    <a href="{{ redirect_to }}" class="btn success">
+        Kembali ke Beranda
+    </a>
+
+{% elif keputusan == "penguatan" %}
+    <p>📘 Pemahaman Anda masih perlu diperkuat.</p>
+    <p>Sistem akan memberikan materi penguatan.</p>
+
+    <a href="{{ redirect_to }}" class="btn warning">
+        Pelajari Materi Penguatan
+    </a>
+
+{% elif keputusan == "turun_level" %}
+    <p>⚠️ Materi saat ini terlalu sulit.</p>
+    <p>Sistem menyarankan kembali ke level <strong>{{ next_level|capitalize }}</strong>.</p>
+
+    <a href="{{ url_for('materi', tingkat=next_level) }}" class="btn danger">
+        Kembali ke Level {{ next_level|capitalize }}
+    </a>
+
+{% endif %}
 
 </body>
 </html>

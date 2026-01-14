@@ -7,6 +7,22 @@ model = joblib.load("model/decision_tree.pkl")
 level_encoder = joblib.load("model/level_encoder.pkl")
 label_encoder = joblib.load("model/label_encoder.pkl")
 
+# ================== MAPPING TINGKAT ==================
+TINGKAT_ORDER = ["mudah", "normal", "sulit"]
+
+def tingkat_selanjutnya(level):
+    if level not in TINGKAT_ORDER:
+        return level
+    idx = TINGKAT_ORDER.index(level)
+    return TINGKAT_ORDER[min(idx + 1, len(TINGKAT_ORDER) - 1)]
+
+def tingkat_sebelumnya(level):
+    if level not in TINGKAT_ORDER:
+        return level
+    idx = TINGKAT_ORDER.index(level)
+    return TINGKAT_ORDER[max(idx - 1, 0)]
+
+
 app = Flask(__name__)
 app.secret_key = "emotion-adaptive-ai"
 
@@ -97,53 +113,70 @@ def soal(tingkat):
 
 
 # ================== (3) FEEDBACK + AI ==================
-@app.route("/feedback", methods=["GET"])
+@app.route("/feedback")
 def feedback():
     skor = float(request.args.get("skor"))
-    waktu = int(request.args.get("waktu"))
+    waktu = float(request.args.get("waktu"))
     level = request.args.get("level")
 
     level_encoded = level_encoder.transform([level])[0]
-    X_input = np.array([[skor, waktu, level_encoded]])
+    X = [[skor, waktu, level_encoded]]
 
-    pred_encoded = model.predict(X_input)[0]
-    hasil = label_encoder.inverse_transform([pred_encoded])[0]
+    hasil = label_encoder.inverse_transform(model.predict(X))[0]
+
+    keputusan = ""
+    next_level = None
+    redirect_to = None
 
     if hasil == "paham":
-        feedback_text = "Anda sudah memahami materi dengan baik."
-        rekomendasi = "Lanjut ke materi berikutnya."
+        if level == "mudah":
+            keputusan = "naik_level"
+            next_level = "normal"
+        elif level == "normal":
+            keputusan = "naik_level"
+            next_level = "sulit"
+        else:
+            keputusan = "lulus"
+            redirect_to = "/"
+
     elif hasil == "kurang_paham":
-        feedback_text = "Pemahaman cukup, namun perlu penguatan."
-        rekomendasi = "Pelajari ulang materi dengan contoh tambahan."
-    else:
-        feedback_text = "Pemahaman masih kurang."
-        rekomendasi = "Ulangi materi dari dasar."
+        keputusan = "penguatan"
+        redirect_to = url_for("materi_pengayaan", level=level)
+
+    elif hasil == "tidak_paham":
+        if level == "mudah":
+            keputusan = "penguatan"
+            redirect_to = url_for("materi_pengayaan", level=level)
+        else:
+            keputusan = "turun_level"
+            next_level = "mudah" if level == "normal" else "normal"
 
     return render_template(
         "feedback.html",
-        skor=skor,
-        waktu=waktu,
-        level=level,
         hasil=hasil,
-        feedback=feedback_text,
-        rekomendasi=rekomendasi
+        keputusan=keputusan,
+        level=level,
+        next_level=next_level,
+        redirect_to=redirect_to,
+        skor=skor,
+        waktu=waktu
     )
 
-# ================== AI SEARCHING ==================
-def ai_search(jumlah_salah):
-    """
-    AI Searching + Learning:
-    memilih materi berdasarkan pengalaman kesalahan siswa
-    """
-    if jumlah_salah <= 1:
-        return 0  # ulang materi dasar
-    else:
-        return 1  # materi alternatif (lebih detail)
 
-# ================== HASIL ==================
-@app.route("/hasil")
-def hasil():
-    return render_template("hasil.html")
+@app.route("/materi_pengayaan/<level>")
+def materi_pengayaan(level):
+    with open("data/materi_pengayaan.json", "r", encoding="utf-8") as f:
+        materi = json.load(f)
+
+    if level not in materi:
+        return "Materi pengayaan tidak tersedia", 404
+
+    return render_template(
+        "materi_pengayaan.html",
+        level=level,
+        materi=materi[level]
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Materi Pengayaan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="materi-pengayaan-page">
+
+<h1>Materi Pengayaan ({{ level|capitalize }})</h1>
+
+<p>
+    Materi ini disesuaikan berdasarkan hasil evaluasi Anda.
+    Bacalah dengan perlahan sebelum melanjutkan ke soal berikutnya.
+</p>
+
+<div class="materi-box">
+    {% for item in materi %}
+        {% if "http://" in item or "https://" in item %}
+            <p>
+                📘
+                <a href="{{ item.split(': ')[1] }}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    {{ item.split(': ')[0] }}
+                </a>
+            </p>
+        {% else %}
+            <p>📘 {{ item }}</p>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+<div class="action">
+    <a href="{{ url_for('soal', tingkat=level) }}" class="btn">
+        Coba Soal Lagi
+    </a>
+</div>
+
+</body>
+</html>

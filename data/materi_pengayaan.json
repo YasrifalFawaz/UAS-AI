@@ -1,0 +1,29 @@
+{
+  "mudah": [
+    "Persamaan linear memiliki satu variabel (huruf seperti x) dengan pangkat tertinggi satu.",
+    "Tujuan utama adalah mencari nilai variabel yang membuat sisi kiri dan kanan sama (seimbang).",
+    "Gunakan logika timbangan: Apa yang dilakukan di kiri harus dilakukan di kanan agar tetap sama.",
+    "Soal: x + 2 = 5. Penyelesaian: Bayangkan angka berapa jika ditambah 2 jadi 5? Kita kurangi kedua ruas dengan 2: x + 2 - 2 = 5 - 2, maka x = 3. Contoh lain: x + 7 = 12, maka x = 12 - 7 = 5.",
+    "Materi Pengayaan: Jika kesulitan, gunakan metode 'tutup jari' pada variabel untuk menebak angka yang hilang.",
+    "Video Belajar (Visual/Audio): https://www.youtube.com/watch?v=ZzIaRdq5kws",
+    "Web Belajar (Visual): https://www.ruangguru.com/blog/matematika-kelas-8-cara-menyelesaikan-sistem-persamaan-linear-dua-variabel-spldv"
+  ],
+  "normal": [
+    "Bilangan dapat dipindahkan ruas dengan operasi kebalikan: (+) jadi (-), (x) jadi (:).",
+    "Urutan pindah ruas: pindahkan angka yang berdiri sendiri (tambah/kurang) terlebih dahulu.",
+    "Koefisien variabel (angka di depan x) disederhanakan terakhir dengan pembagian.",
+    "Soal: 2x + 4 = 10. Penyelesaian: 1. Pindahkan +4 menjadi -4 (2x = 10 - 4 = 6). 2. Pindahkan kali 2 menjadi bagi 2 (x = 6 / 2). Hasilnya x = 3. Contoh lain: 5x - 3 = 12 -> 5x = 15 -> x = 3.",
+    "Materi Pengayaan: Pahami aturan KABATAKU terbalik untuk membongkar persamaan selangkah demi selangkah.",
+    "Video Belajar (Visual/Audio): https://www.youtube.com/watch?v=7H_EhKcK2G4",
+    "Web Belajar (Visual): https://www.quipper.com/id/blog/mapel/matematika/persamaan-linear-satu-variabel-matematika-kelas-10/"
+  ],
+  "sulit": [
+    "Sifat Distributif: Jika ada kurung seperti a(x + b), kalikan 'a' ke semua angka di dalam kurung.",
+    "Menghilangkan Pecahan: Kalikan seluruh persamaan dengan angka penyebut agar menjadi bilangan bulat.",
+    "Ketelitian sangat diperlukan terutama saat menangani tanda negatif (-) dan pindah ruas.",
+    "Soal: 3(x + 4) - 5 = 10. Penyelesaian: 1. Hilangkan -5 (3(x+4) = 15). 2. Hilangkan kali 3 dengan bagi (x + 4 = 15/3 = 5). 3. Pindahkan +4 (x = 5 - 4 = 1). Contoh Pecahan: (x/2) + 3 = 7 -> x/2 = 4 -> x = 4 * 2 = 8.",
+    "Materi Pengayaan: Jika ada banyak pecahan, cari KPK dari semua penyebut untuk menyederhanakan seluruh baris.",
+    "Video Belajar (Visual/Audio): https://www.youtube.com/watch?v=Z3xl0VF7gy4",
+    "Web Belajar (Visual): https://www.gramedia.com/literasi/sifat-distributif/"
+  ]
+}

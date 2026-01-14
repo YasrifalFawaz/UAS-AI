@@ -428,3 +428,120 @@ body.feedback-page {
     }
 }
 
+/* ============================= */
+/* FEEDBACK – ACTION BUTTONS */
+/* ============================= */
+
+.feedback-page .btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 36px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.feedback-page .btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.95;
+}
+
+/* Variasi keputusan */
+.feedback-page .btn.success {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+.feedback-page .btn.warning {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+
+.feedback-page .btn.danger {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+}
+
+.feedback-page .btn:not(.success):not(.warning):not(.danger) {
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+}
+
+/* ============================= */
+/* HALAMAN MATERI PENGAYAAN */
+/* ============================= */
+
+body.materi-pengayaan-page {
+    margin: 0;
+    padding: 60px;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(120deg, #ecfeff, #f8fafc);
+    min-height: 100vh;
+    color: #1f2937;
+}
+
+/* Judul */
+.materi-pengayaan-page h1 {
+    font-size: 2.6rem;
+    margin-bottom: 30px;
+    color: #065f46;
+}
+
+/* Box materi */
+.materi-pengayaan-page .materi-box {
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 20px;
+    max-width: 850px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    border-left: 8px solid #10b981;
+}
+
+/* Isi materi */
+.materi-pengayaan-page p,
+.materi-pengayaan-page li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    color: #374151;
+}
+
+/* List */
+.materi-pengayaan-page ul {
+    padding-left: 22px;
+}
+
+/* Tombol kembali */
+.materi-pengayaan-page .btn-back {
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #334155, #1f2937);
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.materi-pengayaan-page .btn-back:hover {
+    transform: translateY(-3px);
+    background: #111827;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body.materi-pengayaan-page {
+        padding: 30px;
+    }
+
+    .materi-pengayaan-page h1 {
+        font-size: 2.1rem;
+    }
+
+    .materi-pengayaan-page .materi-box {
+        padding: 25px;
+    }
+}
+

@@ -4,7 +4,8 @@
     "deskripsi": "Materi ini membahas konsep dasar persamaan linear satu variabel.",
     "materi": [
       "Persamaan linear memiliki satu variabel dengan pangkat tertinggi satu.",
-      "Tujuan utama adalah mencari nilai variabel yang memenuhi persamaan."
+      "Tujuan utama adalah mencari nilai variabel yang memenuhi persamaan.",
+      "Konsep Kesamaan: Tanda sama dengan (=) menunjukkan bahwa nilai di ruas kiri harus sama persis dengan nilai di ruas kanan."
     ],
     "contoh": "x + 2 = 5, maka x = 3"
   },
@@ -13,7 +14,9 @@
     "deskripsi": "Materi ini melibatkan manipulasi aljabar sederhana.",
     "materi": [
       "Bilangan dapat dipindahkan ruas dengan operasi kebalikan.",
-      "Koefisien variabel harus disederhanakan."
+      "Koefisien variabel harus disederhanakan.",
+      "Prinsip Keadilan: Apa pun yang kamu lakukan di ruas kiri (tambah, kurang, kali, bagi),harus kamu lakukan juga di ruas kanan agar tetap seimbang.",
+      "Metode Pindah Ruas: Memindahkan suku-suku sehingga variabel berada di satu sisi dan konstanta di sisi lainnya."
     ],
     "contoh": "2x + 4 = 10, maka x = 3"
   },
@@ -22,7 +25,9 @@
     "deskripsi": "Materi ini melibatkan pecahan dan operasi kompleks.",
     "materi": [
       "Persamaan dapat mengandung pecahan atau bentuk rasional.",
-      "Ketelitian sangat diperlukan dalam menyelesaikannya."
+      "Ketelitian sangat diperlukan dalam menyelesaikannya. Berhati-hatilah dengan tanda negatif ($-$) saat mengalikan atau memindahkan ruas, karena sering kali menjadi penyebab kesalahan fatal.",
+      "Sifat Distributif: Jika ada bentuk a(x + b), maka a harus dikalikan ke dalam satu per satu: (a * x) + (a *  b).",
+      "Menghilangkan Pecahan: Cara termudah menyelesaikan pecahan adalah dengan mengalikan seluruh persamaan dengan angka penyebutnya agar pecahannya hilang."
     ],
     "contoh": "(x / 2) + 3 = 7, maka x = 8"
   }
